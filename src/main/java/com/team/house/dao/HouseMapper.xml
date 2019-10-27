@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.team.house.dao.HouseMapper" >
+  <resultMap id="BaseResultMap" type="com.team.house.entity.House" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="TYPE_ID" property="typeId" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+    <result column="PUBDATE" property="pubdate" jdbcType="DATE" />
+    <result column="FLOORAGE" property="floorage" jdbcType="INTEGER" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="STREET_ID" property="streetId" jdbcType="INTEGER" />
+    <result column="ispass" property="ispass" jdbcType="INTEGER" />
+    <result column="isdel" property="isdel" jdbcType="INTEGER" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USER_ID, TYPE_ID, TITLE, DESCRIPTION, PRICE, PUBDATE, FLOORAGE, CONTACT, STREET_ID, 
+    ispass, isdel, path
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from house
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from house
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.team.house.entity.House" >
+    insert into house (ID, USER_ID, TYPE_ID, 
+      TITLE, DESCRIPTION, PRICE, 
+      PUBDATE, FLOORAGE, CONTACT, 
+      STREET_ID, ispass, isdel, 
+      path)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{pubdate,jdbcType=DATE}, #{floorage,jdbcType=INTEGER}, #{contact,jdbcType=VARCHAR}, 
+      #{streetId,jdbcType=INTEGER}, #{ispass,jdbcType=INTEGER}, #{isdel,jdbcType=INTEGER}, 
+      #{path,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.team.house.entity.House" >
+    insert into house
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="typeId != null" >
+        TYPE_ID,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="pubdate != null" >
+        PUBDATE,
+      </if>
+      <if test="floorage != null" >
+        FLOORAGE,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="streetId != null" >
+        STREET_ID,
+      </if>
+      <if test="ispass != null" >
+        ispass,
+      </if>
+      <if test="isdel != null" >
+        isdel,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="pubdate != null" >
+        #{pubdate,jdbcType=DATE},
+      </if>
+      <if test="floorage != null" >
+        #{floorage,jdbcType=INTEGER},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="streetId != null" >
+        #{streetId,jdbcType=INTEGER},
+      </if>
+      <if test="ispass != null" >
+        #{ispass,jdbcType=INTEGER},
+      </if>
+      <if test="isdel != null" >
+        #{isdel,jdbcType=INTEGER},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.team.house.entity.House" >
+    update house
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null" >
+        TYPE_ID = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="pubdate != null" >
+        PUBDATE = #{pubdate,jdbcType=DATE},
+      </if>
+      <if test="floorage != null" >
+        FLOORAGE = #{floorage,jdbcType=INTEGER},
+      </if>
+      <if test="contact != null" >
+        CONTACT = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="streetId != null" >
+        STREET_ID = #{streetId,jdbcType=INTEGER},
+      </if>
+      <if test="ispass != null" >
+        ispass = #{ispass,jdbcType=INTEGER},
+      </if>
+      <if test="isdel != null" >
+        isdel = #{isdel,jdbcType=INTEGER},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.team.house.entity.House" >
+    update house
+    set USER_ID = #{userId,jdbcType=INTEGER},
+      TYPE_ID = #{typeId,jdbcType=INTEGER},
+      TITLE = #{title,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=DECIMAL},
+      PUBDATE = #{pubdate,jdbcType=DATE},
+      FLOORAGE = #{floorage,jdbcType=INTEGER},
+      CONTACT = #{contact,jdbcType=VARCHAR},
+      STREET_ID = #{streetId,jdbcType=INTEGER},
+      ispass = #{ispass,jdbcType=INTEGER},
+      isdel = #{isdel,jdbcType=INTEGER},
+      path = #{path,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByUserId" parameterType="int" resultType="ExHouse">
+    SELECT h.ID,TITLE,FLOORAGE,CONTACT,path,ispass,t.NAME tname,d.NAME dname,s.NAME sname FROM house h
+LEFT JOIN TYPE t ON h.TYPE_ID=t.ID
+LEFT JOIN street s ON h.STREET_ID=s.ID
+LEFT JOIN district d ON s.DISTRICT_ID=d.ID
+WHERE USER_ID=#{userId} and isdel=0
+  </select>
+
+  <select id="selectExHouse" parameterType="String" resultType="ExHouse">
+    SELECT h.ID,TYPE_ID typeId,ispass,title,description,price,pubdate,floorage,contact,STREET_ID streetId,path,s.DISTRICT_ID did
+from house h,street s,district d where h.STREET_ID=s.ID and h.ID=#{userId}
+  </select>
+
+  <select id="selectExHouseBySome" parameterType="com.team.house.util.SelHouse" resultType="ExHouse">
+    SELECT h.ID,TITLE,FLOORAGE,CONTACT,price,path,t.NAME tname,d.NAME dname,s.NAME sname FROM house h
+    LEFT JOIN TYPE t ON h.TYPE_ID=t.ID
+    LEFT JOIN street s ON h.STREET_ID=s.ID
+    LEFT JOIN district d ON s.DISTRICT_ID=d.ID
+    where isdel=0 and ispass=1
+    <if test="title!=null and title!=''">
+      and h.title like "%"#{title}"%"
+    </if>
+    <if test="streetId!=null and streetId!=''">
+      and h.STREET_ID=#{streetId}
+    </if>
+    <if test="typeId!=null and typeId!=''">
+      and h.TYPE_ID=#{typeId}
+    </if>
+    <if test="lowPrice!=null and lowPrice!=''">
+      and h.price &gt; #{lowPrice}
+    </if>
+    <if test="topPrice!=null and topPrice!=''">
+      and h.price &lt; #{topPrice}
+    </if>
+  </select>
+
+    <select id="getExHouse" parameterType="String" resultType="ExHouse">
+        SELECT h.ID,TITLE,FLOORAGE,CONTACT,price,pubdate,path,description,t.NAME tname,d.NAME dname,s.NAME sname FROM house h
+        LEFT JOIN TYPE t ON h.TYPE_ID=t.ID
+        LEFT JOIN street s ON h.STREET_ID=s.ID
+        LEFT JOIN district d ON s.DISTRICT_ID=d.ID
+        where h.ID=#{id}
+    </select>
+
+  <select id="selectExHouseByPass" parameterType="Integer" resultType="ExHouse">
+        SELECT h.ID,TITLE,FLOORAGE,CONTACT,price,pubdate,description,t.NAME tname,d.NAME dname,s.NAME sname FROM house h
+        LEFT JOIN TYPE t ON h.TYPE_ID=t.ID
+        LEFT JOIN street s ON h.STREET_ID=s.ID
+        LEFT JOIN district d ON s.DISTRICT_ID=d.ID
+        where ispass=#{state} and isdel=0
+    </select>
+
+  <update id="goPass" parameterType="map">
+    update house set ispass=#{state} where id=#{id}
+  </update>
+</mapper>

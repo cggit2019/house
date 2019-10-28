@@ -8,9 +8,11 @@ import com.team.house.service.StreetService;
 import com.team.house.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +28,7 @@ public class StreetController {
      * */
     @RequestMapping("/getStreet")
     @ResponseBody
-    public Map<String,Object> getStreet(PageBean pb,Integer districtId){
+    public Map<String,Object> getStreet(PageBean pb, Integer districtId){
         PageInfo<Street> pageInfo = streetService.queryAll(pb,districtId);
         Map<String,Object> map=new HashMap<>();
         map.put("rows",pageInfo.getList());

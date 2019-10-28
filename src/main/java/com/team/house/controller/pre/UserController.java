@@ -28,6 +28,12 @@ public class UserController {
         }
     }
 
+    @RequestMapping("/quit")
+    public String quit(HttpSession session){
+        session.removeAttribute("userInfo");
+        return "login";
+    }
+
     @RequestMapping("/regs")
     public String regs(Users users){
         boolean add = usersService.add(users);

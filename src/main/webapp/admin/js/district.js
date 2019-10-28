@@ -1,3 +1,4 @@
+var a=-1;
 $(function () {
     $('#dg').datagrid({
         title:'区域管理',
@@ -125,6 +126,7 @@ function DeleteByFruitName() {
 
 //查询街道详情
 function queryStreet(id) {
+    a=id;
     $("#queryStreetDialog").dialog('open');
     $('#street').datagrid({
         title:'街道管理',
@@ -150,18 +152,10 @@ function queryStreet(id) {
 
 function AddStreet() {
     $("#AddStreetDialog").dialog('open');
+    $("#district_id").val(a);
 }
 
 function SaveStreetDialog() {
-    // var $districtName = $("#districtName").val();
-    // $.post(
-    //     "/admin/add",
-    //     {"name":$districtName},
-    //     function (data) {
-    //         alert(data);
-    //     },"text"
-    //
-    // )
     $("#addStreetForm").form('submit', {
         url:"/admin/addStreet",
         success:function (data) {

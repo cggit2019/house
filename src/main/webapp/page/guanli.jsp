@@ -21,7 +21,7 @@ rel=stylesheet type=text/css href="../css/style.css">
 <DIV id=header class=wrap>
 <DIV id=logo><IMG src="../images/logo.gif"></DIV>
 <DIV class=search>欢迎${sessionScope.userInfo.name}.<LABEL class="ui-green searchs"><a href="fabu.jsp" title="">发布房屋信息</a></LABEL>
-<LABEL class=ui-green><INPUT onclick='document.location="index.jsp"' value="退       出" type=button name=search></LABEL> 
+<LABEL class=ui-green><INPUT onclick='quit()' value="退       出" type=button name=search></LABEL>
 </DIV></DIV>
 <DIV class="main wrap">
 <DIV id=houseArea>
@@ -77,5 +77,8 @@ dojoType="struts:BindAnchor">2</A>
   }
   function toDetails(id) {
       location.href="${pageContext.request.contextPath}/page/getDetails?id="+id;
+  }
+  function quit() {
+      location.href="${pageContext.request.contextPath}/page/quit";
   }
 </script>

@@ -69,6 +69,7 @@
                                    class="easyui-linkbutton" iconCls="icon-cancel">取消</a>
 </div>
 
+
 <%--街道--%>
 <div id="queryStreetDialog" class="easyui-dialog" title="街道信息" buttons="#streDialogButtons"
      style="width: 600px; height: 400px; padding: 10px 50px;" closed="true" data-options="resizable:true,modal:true">
@@ -93,7 +94,7 @@
 <div id="AddStreetDialog" class="easyui-dialog" title="添加街道" buttons="#AddStreetDialogButtons"
      style="width: 280px; height: 250px; padding: 10px 20px;" closed="true" data-options="modal:true">
     <form id="addStreetForm" method="post">
-        <input type="hidden" name="districtId" id="">
+        <input type="hidden" name="districtId" id="district_id">
         <table>
             <tr>
                 <td>添加街道:</td>

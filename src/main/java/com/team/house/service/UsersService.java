@@ -16,4 +16,6 @@ public interface UsersService {
 
     //验证用户名
     boolean checkName(String name);
+
+    Users login2(String telephone);
 }

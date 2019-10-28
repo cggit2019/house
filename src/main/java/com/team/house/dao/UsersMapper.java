@@ -26,4 +26,8 @@ public interface UsersMapper {
 
     @Select("select * from users where `NAME`=#{name}")
     Users checkName(String name);
+
+    //电话登陆
+    @Select("select * from users where TELEPHONE=#{telephone}")
+    Users login2(String telephone);
 }

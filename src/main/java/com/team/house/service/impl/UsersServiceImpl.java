@@ -52,4 +52,10 @@ public class UsersServiceImpl implements UsersService {
         }
         return false;
     }
+
+    //电话登陆
+    @Override
+    public Users login2(String telephone) {
+        return usersMapper.login2(telephone);
+    }
 }

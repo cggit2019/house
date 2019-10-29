@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.team.house.entity.ExHouse;
 import com.team.house.service.HouseService;
 import com.team.house.util.PageBean;
+import com.team.house.util.sms.SentMsgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,11 +32,15 @@ public class HouseController {
 
     @RequestMapping("/goPass")
     @ResponseBody
-    public boolean goPass(String id){
+    public boolean goPass(String id,String contact){
         Map map=new HashMap();
         map.put("id",id);
         map.put("state",1);
-        return houseService.goPass(map);
+        boolean goPass = houseService.goPass(map);
+        if(goPass){
+            SentMsgUtil.sendMsg(contact,"您的房屋审核已通过!");
+        }
+        return goPass;
     }
 
     @RequestMapping("/getPass")

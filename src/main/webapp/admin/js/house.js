@@ -27,7 +27,7 @@ $(function () {
             {field:'sname',title:'街道',width:100,align:'center'},
             {field:'cz',title:'操作',width:100,align:'center',
                 formatter: function(value,row,index){
-                    return "<a onclick='goPass("+row.id+")' href=''>审核</a>";
+                    return "<a onclick='goPass("+(row.id)+","+(row.contact)+")' href=''>审核</a>";
                 }
             }
         ]],
@@ -38,10 +38,10 @@ $(function () {
         // },
     });
 });
-function goPass(id) {
+function goPass(id,contact) {
     $.post(
         "/admin/goPass",
-        {"id":id},
+        {"id":id,"contact":contact},
         function (data) {
             if(data){
                 $("#dg").datagrid('reload');
